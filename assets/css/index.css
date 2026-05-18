@@ -1,0 +1,284 @@
+/* ===== Hero ===== */
+.gl-hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--gl-border);
+    background:
+        radial-gradient(1200px 400px at 50% -10%, rgba(30, 58, 95, 0.10), transparent 70%),
+        linear-gradient(180deg, var(--gl-surface) 0%, var(--gl-bg) 100%);
+}
+
+[data-bs-theme="dark"] .gl-hero {
+    background:
+        radial-gradient(1200px 400px at 50% -10%, rgba(74, 133, 199, 0.18), transparent 70%),
+        linear-gradient(180deg, var(--gl-surface) 0%, var(--gl-bg) 100%);
+}
+
+.gl-hero .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: var(--gl-accent-soft);
+    color: #8a6700;
+    border: 1px solid rgba(245, 184, 0, 0.30);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+[data-bs-theme="dark"] .gl-hero .eyebrow {
+    color: var(--gl-accent);
+    border-color: rgba(245, 184, 0, 0.25);
+}
+
+.gl-hero h1 {
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 16px 0 12px;
+    color: var(--gl-text);
+    letter-spacing: -0.02em;
+}
+
+.gl-hero h1 .accent {
+    color: var(--gl-primary);
+    position: relative;
+}
+
+.gl-hero h1 .accent::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    background: var(--gl-accent);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+.gl-hero p.lead {
+    color: var(--gl-text-muted);
+    font-size: 1.05rem;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.gl-hero-meta {
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.gl-hero-meta .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gl-text-muted);
+    font-size: 0.85rem;
+}
+
+.gl-hero-meta .item i {
+    color: var(--gl-primary);
+}
+
+/* ===== Section heading ===== */
+.gl-section-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.gl-section-title h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--gl-text);
+    letter-spacing: -0.01em;
+}
+
+.gl-section-title .hint {
+    color: var(--gl-text-subtle);
+    font-size: 0.85rem;
+}
+
+/* ===== Law cards grid ===== */
+.gl-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.gl-law-card {
+    position: relative;
+    background-color: var(--gl-surface);
+    border: 1px solid var(--gl-border);
+    border-radius: var(--gl-radius);
+    padding: 22px 20px;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    min-height: 170px;
+    cursor: not-allowed;
+}
+
+.gl-law-card.is-disabled {
+    opacity: 0.62;
+}
+
+.gl-law-card.is-active {
+    cursor: pointer;
+    border-color: var(--gl-primary);
+    box-shadow: 0 0 0 1px var(--gl-primary), var(--gl-shadow-sm);
+}
+
+.gl-law-card.is-active:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 1px var(--gl-primary), var(--gl-shadow-lg);
+}
+
+.gl-law-card .icon-wrap {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    background: var(--gl-surface-alt);
+    color: var(--gl-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
+}
+
+.gl-law-card.is-active .icon-wrap {
+    background: var(--gl-accent-soft);
+    color: var(--gl-accent);
+}
+
+.gl-law-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+    color: var(--gl-text);
+}
+
+.gl-law-card p {
+    font-size: 0.82rem;
+    color: var(--gl-text-muted);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.gl-law-card .status {
+    margin-top: auto;
+    padding-top: 14px;
+    font-size: 0.72rem;
+    color: var(--gl-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.gl-law-card.is-active .status {
+    color: #2f7a3a;
+}
+
+[data-bs-theme="dark"] .gl-law-card.is-active .status {
+    color: #6dd486;
+}
+
+.gl-law-card .status .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: currentColor;
+    box-shadow: 0 0 0 3px currentColor;
+    opacity: 1;
+    margin-right: 2px;
+}
+
+.gl-law-card .status .dot {
+    opacity: 0.9;
+}
+
+.gl-law-card.is-active .status .dot {
+    background-color: #2f7a3a;
+    box-shadow: 0 0 0 3px rgba(47, 122, 58, 0.18);
+}
+
+[data-bs-theme="dark"] .gl-law-card.is-active .status .dot {
+    background-color: #6dd486;
+    box-shadow: 0 0 0 3px rgba(109, 212, 134, 0.18);
+}
+
+.gl-law-card .badge-active {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--gl-accent);
+    color: #1a1a1a;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+/* ===== Audience strip ===== */
+.gl-audience {
+    margin-top: 56px;
+    padding: 32px 28px;
+    background: var(--gl-surface);
+    border: 1px solid var(--gl-border);
+    border-radius: var(--gl-radius);
+}
+
+.gl-audience h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: var(--gl-text);
+}
+
+.gl-audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.gl-audience-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.gl-audience-item i {
+    font-size: 1.15rem;
+    color: var(--gl-primary);
+    margin-top: 2px;
+}
+
+.gl-audience-item .label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gl-text);
+    margin-bottom: 2px;
+}
+
+.gl-audience-item .desc {
+    font-size: 0.8rem;
+    color: var(--gl-text-muted);
+    line-height: 1.45;
+}

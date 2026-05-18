@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Захист прав споживачів — GLeX</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/module.css">
+
+    <style>
+        .typing-dots span {
+            animation: blink 1.2s infinite;
+            opacity: 0.3;
+        }
+
+        .typing-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="gl-navbar">
+        <a class="gl-icon-btn me-1" href="index.html" title="Назад до галузей">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <a class="brand" href="index.html">
+            <span class="brand-mark"><i class="bi bi-bank"></i></span>
+            <span>
+                <span class="brand-name">GLeX</span>
+                <span class="brand-sub d-none d-sm-inline">/ Захист прав споживачів</span>
+            </span>
+        </a>
+
+        <div class="nav-actions">
+            <button class="gl-icon-btn" data-theme-toggle title="Перемкнути тему">
+                <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+            </button>
+
+            <div class="dropdown">
+                <button class="gl-user-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="gl-avatar">ЮЮ</span>
+                    <span class="gl-user-name d-none d-md-inline">Юрій Юрист</span>
+                    <i class="bi bi-chevron-down small text-gl-subtle d-none d-md-inline"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i>Акаунт</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i>Налаштування</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle"></i>Довідка</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-chat-square-dots"></i>Зворотний зв'язок</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-box-arrow-right"></i>Вихід</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="gl-app">
+
+        <aside class="gl-sidebar">
+            <div class="gl-sidebar-header">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="bi bi-plus-lg"></i>Новий чат
+                </button>
+            </div>
+            <div class="gl-sidebar-section-title">Історія сесій</div>
+            <div class="gl-history" id="chatHistory"></div>
+        </aside>
+
+        <main class="gl-chat">
+
+            <div class="gl-chat-header">
+                <button class="gl-drawer-btn sidebar-toggle" data-toggle="sidebar" aria-label="Історія сесій">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <div class="module-title">
+                    <i class="bi bi-cart-check"></i>
+                    <span>Захист прав споживачів</span>
+                </div>
+
+                <div class="gl-mode-group" role="group" aria-label="Режим роботи">
+                    <input type="radio" name="userMode" id="modeCitizen" value="citizen" checked>
+                    <label for="modeCitizen" title="Громадянин"><i class="bi bi-person"></i>Громадянин</label>
+
+                    <input type="radio" name="userMode" id="modeLawyer" value="lawyer">
+                    <label for="modeLawyer" title="Юрист"><i class="bi bi-briefcase"></i>Юрист</label>
+
+                    <input type="radio" name="userMode" id="modeStudent" value="student">
+                    <label for="modeStudent" title="Студент"><i class="bi bi-mortarboard"></i>Студент</label>
+                </div>
+
+                <button class="gl-drawer-btn docs-toggle" data-toggle="docs" aria-label="Нормативна база">
+                    <i class="bi bi-journal-text"></i>
+                </button>
+
+                <div class="gl-mode-hint" id="modeHint"></div>
+            </div>
+
+            <div class="gl-messages" id="chatMessages"></div>
+
+            <div class="gl-input-wrap">
+                <div class="gl-input-box">
+                    <textarea id="chatInput" rows="1"
+                        placeholder="Опишіть правову ситуацію або поставте питання…"></textarea>
+                    <button class="gl-send-btn" id="sendBtn" title="Надіслати (Enter)">
+                        <i class="bi bi-send-fill"></i>
+                    </button>
+                </div>
+                <div class="gl-input-footer">
+                    <span><i class="bi bi-check-circle-fill"></i>Джерело: офіційні API ВРУ · база оновлена
+                        сьогодні</span>
+                    <span class="d-none d-md-inline">Enter — надіслати · Shift+Enter — новий рядок</span>
+                </div>
+            </div>
+        </main>
+
+        <aside class="gl-doc">
+            <h6><i class="bi bi-file-earmark-text" style="color: var(--gl-primary);"></i>Нормативна база</h6>
+
+            <div class="gl-doc-tabs">
+                <button type="button" class="is-active">Акти</button>
+                <button type="button">Граф</button>
+                <button type="button">Law as Code</button>
+            </div>
+
+            <details class="gl-act" open>
+                <summary>
+                    <i class="bi bi-folder2-open"></i>
+                    ЗУ № 1023-XII «Про захист прав…»
+                    <i class="bi bi-chevron-right"></i>
+                </summary>
+                <div class="gl-act-body">
+                    <ul>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 8. Права при виявленні недоліків</a></li>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 9. Обмін товару належної якості</a></li>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 13. Право на відмову поза магазином</a></li>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 22. Захист прав у суді</a></li>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 23. Відповідальність продавця</a></li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="gl-act">
+                <summary>
+                    <i class="bi bi-folder2"></i>
+                    Постанова КМУ № 172
+                    <i class="bi bi-chevron-right"></i>
+                </summary>
+                <div class="gl-act-body">
+                    <ul>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Перелік товарів без обміну</a></li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="gl-act">
+                <summary>
+                    <i class="bi bi-folder2"></i>
+                    Цивільний кодекс України
+                    <i class="bi bi-chevron-right"></i>
+                </summary>
+                <div class="gl-act-body">
+                    <ul>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Гл. 54. Купівля-продаж</a></li>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Ст. 678. Правові наслідки передання товару
+                                неналежної якості</a></li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="gl-act">
+                <summary>
+                    <i class="bi bi-folder2"></i>
+                    Судова практика ВС
+                    <i class="bi bi-chevron-right"></i>
+                </summary>
+                <div class="gl-act-body">
+                    <ul>
+                        <li><a href="#"><i class="bi bi-file-text"></i>Постанова ВС від 2024 у справі № 753/…</a></li>
+                    </ul>
+                </div>
+            </details>
+
+            <div class="gl-laoc">
+                <div class="gl-laoc-title"><i class="bi bi-code-slash"></i>Law as Object Model</div>
+                <pre class="gl-laoc-code"><span class="k">Law</span> {
+  <span class="k">id</span>: <span class="s">"1023-XII"</span>,
+  <span class="k">type</span>: <span class="s">"ConsumerRights"</span>,
+  <span class="k">status</span>: <span class="s">"InForce"</span>,
+  <span class="k">methods</span>: [
+    <span class="s">"exchange(14d)"</span>,
+    <span class="s">"refund()"</span>,
+    <span class="s">"warranty_fix()"</span>
+  ],
+  <span class="k">relations</span>: {
+    <span class="k">supersedes</span>: <span class="n">null</span>,
+    <span class="k">refs</span>: [<span class="s">"CK.gl54"</span>, <span class="s">"KMU.172"</span>]
+  }
+}</pre>
+            </div>
+        </aside>
+
+    </div>
+
+    <div class="gl-backdrop" id="glBackdrop"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/module.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+:root {
+    --gl-primary: #1e3a5f;
+    --gl-primary-hover: #264b78;
+    --gl-accent: #f5b800;
+    --gl-accent-soft: rgba(245, 184, 0, 0.12);
+
+    --gl-bg: #f5f6f8;
+    --gl-surface: #ffffff;
+    --gl-surface-alt: #eef0f4;
+    --gl-border: #dde1e7;
+    --gl-text: #1a202c;
+    --gl-text-muted: #5a6473;
+    --gl-text-subtle: #8a93a3;
+
+    --gl-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+    --gl-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 2px 4px rgba(15, 23, 42, 0.04);
+    --gl-shadow-lg: 0 14px 32px rgba(15, 23, 42, 0.10);
+
+    --gl-radius: 10px;
+    --gl-radius-sm: 6px;
+
+    --gl-font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+    --gl-navbar-h: 60px;
+}
+
+[data-bs-theme="dark"] {
+    --gl-primary: #4a85c7;
+    --gl-primary-hover: #5d97d9;
+    --gl-accent: #f5b800;
+    --gl-accent-soft: rgba(245, 184, 0, 0.18);
+
+    --gl-bg: #0d1117;
+    --gl-surface: #161b22;
+    --gl-surface-alt: #1c232c;
+    --gl-border: #2a323d;
+    --gl-text: #e6edf3;
+    --gl-text-muted: #9aa5b1;
+    --gl-text-subtle: #6b7685;
+
+    --gl-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --gl-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --gl-shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.6);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--gl-font);
+    background-color: var(--gl-bg);
+    color: var(--gl-text);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Navbar ===== */
+.gl-navbar {
+    background-color: var(--gl-surface);
+    border-bottom: 1px solid var(--gl-border);
+    height: var(--gl-navbar-h);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.gl-navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--gl-text);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.gl-navbar .brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--gl-primary) 0%, #122847 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.gl-navbar .brand-mark::after {
+    content: "";
+    position: absolute;
+    transform: translate(11px, 11px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gl-accent);
+    box-shadow: 0 0 8px rgba(245, 184, 0, 0.7);
+}
+
+.gl-navbar .brand-name {
+    font-size: 1.1rem;
+}
+
+.gl-navbar .brand-sub {
+    color: var(--gl-text-muted);
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-left: 6px;
+}
+
+.gl-navbar .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Icon-button generic */
+.gl-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--gl-text-muted);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.gl-icon-btn:hover {
+    background-color: var(--gl-surface-alt);
+    color: var(--gl-text);
+    border-color: var(--gl-border);
+}
+
+/* User dropdown trigger */
+.gl-user-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 4px;
+    border-radius: 999px;
+    border: 1px solid var(--gl-border);
+    background: var(--gl-surface);
+    color: var(--gl-text);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.gl-user-toggle:hover {
+    background: var(--gl-surface-alt);
+}
+
+.gl-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gl-accent);
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.gl-user-toggle .gl-user-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Bootstrap dropdown override */
+.dropdown-menu {
+    border-radius: var(--gl-radius);
+    border: 1px solid var(--gl-border);
+    background: var(--gl-surface);
+    box-shadow: var(--gl-shadow-md);
+    padding: 6px;
+    min-width: 220px;
+}
+
+.dropdown-item {
+    border-radius: var(--gl-radius-sm);
+    padding: 8px 10px;
+    color: var(--gl-text);
+    font-size: 0.9rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--gl-surface-alt);
+    color: var(--gl-text);
+}
+
+.dropdown-item i {
+    color: var(--gl-text-muted);
+    width: 18px;
+    text-align: center;
+    margin-right: 6px;
+}
+
+.dropdown-divider {
+    border-color: var(--gl-border);
+    margin: 4px 0;
+}
+
+/* ===== Generic buttons ===== */
+.btn-gl-primary {
+    background-color: var(--gl-primary);
+    color: #fff;
+    border: 1px solid var(--gl-primary);
+    border-radius: 8px;
+    padding: 7px 16px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.btn-gl-primary:hover {
+    background-color: var(--gl-primary-hover);
+    border-color: var(--gl-primary-hover);
+    color: #fff;
+}
+
+.btn-gl-outline {
+    background-color: transparent;
+    color: var(--gl-text);
+    border: 1px solid var(--gl-border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.btn-gl-outline:hover {
+    background-color: var(--gl-surface-alt);
+    border-color: var(--gl-text-subtle);
+    color: var(--gl-text);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gl-border);
+    border-radius: 10px;
+    border: 2px solid var(--gl-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gl-text-subtle);
+}
+
+/* ===== Utility ===== */
+.text-gl-muted {
+    color: var(--gl-text-muted) !important;
+}
+
+.text-gl-subtle {
+    color: var(--gl-text-subtle) !important;
+}
+
+.bg-gl-surface {
+    background-color: var(--gl-surface) !important;
+}
+
+.gl-divider {
+    height: 1px;
+    background-color: var(--gl-border);
+    width: 100%;
+}
+
+/* ===== Footer ===== */
+.gl-footer {
+    border-top: 1px solid var(--gl-border);
+    padding: 1.5rem 0;
+    text-align: center;
+    color: var(--gl-text-subtle);
+    font-size: 0.82rem;
+}
+
+.gl-footer a {
+    color: var(--gl-text-muted);
+    text-decoration: none;
+}
+
+.gl-footer a:hover {
+    color: var(--gl-primary);
+}
